@@ -15,7 +15,7 @@ const {
  * Step 1: Call the parseData function
  *      From the analysis.js file, call the parseData method with the correct file path to the data file.
  */
-const DATA_FILE = __dirname + '/multilingual_mobile_app_reviews_2025.csv';
+const DATA_FILE = `${__dirname}/multilingual_mobile_app_reviews_2025.csv`;
 const csv = parseData(DATA_FILE);
 
 /**

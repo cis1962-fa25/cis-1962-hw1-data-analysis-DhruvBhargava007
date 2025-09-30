@@ -9,7 +9,7 @@ export default defineConfig([
         files: ['**/*.{js,mjs,cjs}'],
         plugins: { js, unicorn: eslintPluginUnicorn },
         extends: ['js/recommended'],
-        languageOptions: { globals: globals.browser },
+        languageOptions: { globals: { ...globals.browser, ...globals.node } },
         rules: {
             // eslint base rules
             'no-lonely-if': 'error',
@@ -31,5 +31,16 @@ export default defineConfig([
         },
     },
     { files: ['**/*.js'], languageOptions: { sourceType: 'commonjs' } },
+    {
+        files: ['test/**/*.js'],
+        languageOptions: {
+            globals: {
+                ...globals.node,
+                describe: 'readonly',
+                it: 'readonly',
+                before: 'readonly',
+            },
+        },
+    },
     eslintPluginPrettierRecommended,
 ]);
